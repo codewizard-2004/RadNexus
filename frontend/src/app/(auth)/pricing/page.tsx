@@ -1,6 +1,10 @@
 "use client";
 
+import { useRouter } from 'next/navigation'; 
+
+
 export default function PricingPage() {
+  const router = useRouter();
   return (
     <main className="min-h-screen relative overflow-hidden flex flex-col items-center justify-center text-white font-sans">
       {/* Animated background gradients */}
@@ -30,7 +34,7 @@ export default function PricingPage() {
                 <li>Email support</li>
                 <li>Limited monthly reports</li>
               </ul>
-              <button className="mt-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-3 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-blue-500/25">
+              <button onClick={() => router.push("/dashboard")} className="mt-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-3 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-blue-500/25">
                 Get Started Free
               </button>
             </div>

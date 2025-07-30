@@ -20,6 +20,9 @@ import Account from '@/components/Account';
 import Security from '@/components/Security';
 import Subscription from '@/components/Subscription';
 import Health from '@/components/Health';
+import Modal from '@/components/Modal';
+import { useToast, useToastActions } from '@/components/Toast';
+import { useRouter } from 'next/navigation';
 
 // Define types for state objects
 interface ShowPasswordState {
@@ -38,12 +41,9 @@ interface FormDataState {
   confirmPassword: string;
   notifications: {
     email: boolean;
-    push: boolean;
-    sms: boolean;
     marketing: boolean;
   };
   privacy: {
-    profileVisible: boolean;
     dataSharing: boolean;
     analytics: boolean;
   };
@@ -72,12 +72,9 @@ export default function App() {
     confirmPassword: '',
     notifications: {
       email: true,
-      push: true,
-      sms: false,
       marketing: false
     },
     privacy: {
-      profileVisible: true,
       dataSharing: false,
       analytics: true
     }
@@ -85,6 +82,8 @@ export default function App() {
   const [userPlan, setUserPlan] = useState<'free' | 'pro'>('free');
   const [isGoogleLinked, setIsGoogleLinked] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const { success, error } = useToastActions();
+  const router = useRouter();
 
   const tabs: Tab[] = [
     { id: 'account', label: 'Account', icon: User },
@@ -127,13 +126,13 @@ export default function App() {
     console.log(`Saving ${section}:`, formData);
     // In a real app, you would show a toast notification instead of an alert.
     // For this example, we'll keep the alert.
-    alert(`${section} settings saved successfully!`);
+    success(`${section} settings saved successfully!`)
   };
 
   const handleUpgradePlan = () => {
     console.log('Upgrading to Pro plan');
+    router.push('/pricing');
     setUserPlan('pro');
-    alert('Congratulations! You have upgraded to the Pro plan.');
   };
 
   const handleDeleteAccount = () => {
@@ -192,8 +191,6 @@ export default function App() {
                       <p className="text-white font-medium capitalize">{key.replace(/([A-Z])/g, ' $1')}</p>
                       <p className="text-gray-400 text-sm">
                         {key === 'email' && 'Receive notifications via email'}
-                        {key === 'push' && 'Browser and mobile push notifications'}
-                        {key === 'sms' && 'Text message notifications'}
                         {key === 'marketing' && 'Product updates and offers'}
                       </p>
                     </div>
@@ -230,7 +227,6 @@ export default function App() {
                     <div>
                       <p className="text-white font-medium capitalize">{key.replace(/([A-Z])/g, ' $1')}</p>
                       <p className="text-gray-400 text-sm">
-                        {key === 'profileVisible' && 'Make your profile visible to other users'}
                         {key === 'dataSharing' && 'Share anonymized data for research purposes'}
                         {key === 'analytics' && 'Allow usage analytics to improve our service'}
                       </p>
@@ -253,31 +249,6 @@ export default function App() {
               >
                 Save Settings
               </button>
-            </div>
-
-            <div className="bg-white/5 rounded-xl p-6 border border-white/20">
-              <h3 className="text-lg font-semibold text-white mb-4">Data Management</h3>
-              <div className="space-y-4">
-                <button className="w-full p-4 bg-white/5 hover:bg-white/10 rounded-lg text-left transition-all">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-white font-medium">Download My Data</p>
-                      <p className="text-gray-400 text-sm">Get a copy of all your data</p>
-                    </div>
-                    <Download className="w-5 h-5 text-gray-400" />
-                  </div>
-                </button>
-                
-                <button className="w-full p-4 bg-white/5 hover:bg-white/10 rounded-lg text-left transition-all">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-white font-medium">Clear Scan History</p>
-                      <p className="text-gray-400 text-sm">Remove all previous scan records</p>
-                    </div>
-                    <Trash2 className="w-5 h-5 text-gray-400" />
-                  </div>
-                </button>
-              </div>
             </div>
           </div>
         );
@@ -348,33 +319,14 @@ export default function App() {
 
       {/* Delete Account Modal */}
       {showDeleteModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="bg-slate-800/70 backdrop-blur-lg rounded-xl p-8 border border-white/20 max-w-md w-full mx-4 shadow-2xl">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-red-500/50">
-                <AlertTriangle className="w-8 h-8 text-red-400" />
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Delete Account</h3>
-              <p className="text-gray-300 mb-6">
-                Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently removed.
-              </p>
-              <div className="flex gap-4">
-                <button
-                  onClick={() => setShowDeleteModal(false)}
-                  className="flex-1 px-4 py-3 bg-white/10 hover:bg-white/20 rounded-lg text-white font-medium transition-all"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleDeleteAccount}
-                  className="flex-1 px-4 py-3 bg-red-600 hover:bg-red-700 rounded-lg text-white font-medium transition-all"
-                >
-                  Delete Account
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Modal
+          type='warning'
+          title = 'Delete Account'
+          text= 'Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently removed.'
+          buttonText='Delete Account'
+          onCancel={() => setShowDeleteModal(false)}
+          onSuccess={handleDeleteAccount}
+          />
       )}
     </div>
   );

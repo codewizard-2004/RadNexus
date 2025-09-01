@@ -17,7 +17,7 @@ interface SecurityProps {
   showPassword: ShowPassword;
   formData: SecurityFormData;
   togglePassword: (field: 'current' | 'new' | 'confirm') => void;
-  handleInputChange: (field: string, value: string) => void;
+  handleInputChange: (field: 'currentPassword' | 'newPassword' | 'confirmPassword', value: string) => void;
   handleSave: (section: string) => void;
   isGoogleLinked: boolean;
   setIsGoogleLinked: (linked: boolean) => void;

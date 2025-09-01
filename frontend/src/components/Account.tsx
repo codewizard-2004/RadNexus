@@ -12,7 +12,7 @@ interface FormData {
 interface AccountProps {
     formData: FormData;
     userPlan: string;
-    handleInputChange: (field: string, value: string) => void;
+    handleInputChange: (field: 'firstName' | 'lastName' | 'email', value: string) => void;
     handleSave: (section: string) => void;
 }
 

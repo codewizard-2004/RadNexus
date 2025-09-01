@@ -3,11 +3,17 @@ import {
   Crown
 } from 'lucide-react';
 
+interface FormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
 interface AccountProps {
-    formData: any;
+    formData: FormData;
     userPlan: string;
-    handleInputChange: any;
-    handleSave: any;
+    handleInputChange: (field: string, value: string) => void;
+    handleSave: (section: string) => void;
 }
 
 const Account = ({formData , userPlan , handleInputChange , handleSave}: AccountProps) => {

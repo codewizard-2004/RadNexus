@@ -12,7 +12,7 @@ export default function HealthDashboard() {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [isScanning, setIsScanning] = useState(false);
   const [scanResult, setScanResult] = useState<ScanResult | null>(null);
-  const [userPlan, setUserPlan] = useState('free'); // 'free' or 'pro'
+  const [userPlan] = useState('free'); // 'free' or 'pro'
 
   const scanTypes = [
     { 

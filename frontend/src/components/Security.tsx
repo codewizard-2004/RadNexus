@@ -1,16 +1,28 @@
 import React from 'react'
 import { Eye, EyeOff, Globe, AlertTriangle } from 'lucide-react';
 
+interface ShowPassword {
+  current: boolean;
+  new: boolean;
+  confirm: boolean;
+}
+
+interface SecurityFormData {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}
+
 interface SecurityProps {
-  showPassword: any;
-  formData: any;
-  togglePassword: any;
-  handleInputChange: any;
-  handleSave: any;
+  showPassword: ShowPassword;
+  formData: SecurityFormData;
+  togglePassword: (field: 'current' | 'new' | 'confirm') => void;
+  handleInputChange: (field: string, value: string) => void;
+  handleSave: (section: string) => void;
   isGoogleLinked: boolean;
-  setIsGoogleLinked: any;
-    setShowDeleteModal: any;
-    }
+  setIsGoogleLinked: (linked: boolean) => void;
+  setShowDeleteModal: (show: boolean) => void;
+}
 
 
 const Security = ({showPassword , formData , togglePassword , handleInputChange , handleSave , isGoogleLinked , setIsGoogleLinked, setShowDeleteModal}: SecurityProps) => {

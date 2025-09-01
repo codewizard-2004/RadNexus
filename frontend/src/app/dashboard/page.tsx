@@ -5,6 +5,8 @@ import { User, Upload, Download, Activity, Heart, Brain, Zap, Crown, FileText, C
 import { useRouter } from 'next/navigation';
 
 import Navbar from '@/components/Navbar';
+import ResultPanel from '@/components/ResultPanel';
+import ScanHistory from '@/components/ScanHistory';
 
 export default function HealthDashboard() {
   const [selectedScan, setSelectedScan] = useState('');
@@ -56,6 +58,36 @@ export default function HealthDashboard() {
     { label: 'Alerts', value: '1', icon: AlertCircle, color: 'text-red-400' }
   ];
 
+  const scanHistory = [
+    {
+      id: 1,
+      scanType: 'MRI Scan',
+      fileName: 'brain_scan_001.dcm',
+      date: '2024-01-15',
+      status: 'completed',
+      confidence: 94,
+      color: 'from-blue-500 to-cyan-500'
+    },
+    {
+      id: 2,
+      scanType: 'X-Ray',
+      fileName: 'chest_xray_002.jpg',
+      date: '2024-01-12',
+      status: 'completed',
+      confidence: 87,
+      color: 'from-green-500 to-teal-500'
+    },
+    {
+      id: 3,
+      scanType: 'CT Scan',
+      fileName: 'abdomen_ct_003.dcm',
+      date: '2024-01-10',
+      status: 'completed',
+      confidence: 91,
+      color: 'from-purple-500 to-pink-500'
+    }
+  ];
+
 interface ScanType {
     id: string;
     name: string;
@@ -79,6 +111,7 @@ interface ScanResult {
     findings: string[];
     recommendations: string[];
     confidence: number;
+    showOutputImage?: boolean;
 }
 
 const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -113,7 +146,8 @@ const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>): void => {
           'Follow up in 12 months if asymptomatic',
           'Consult physician for any new symptoms'
         ],
-        confidence: 94
+        confidence: 94,
+        showOutputImage: selectedScan === 'mri' // Show output image for MRI scans
       });
       setIsScanning(false);
     }, 3000);
@@ -166,6 +200,10 @@ const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>): void => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Scan Selection */}
           <div className="lg:col-span-2">
+            {/* Scan History */}
+            <ScanHistory scanHistory={scanHistory}/>
+            
+
             <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20 mb-6">
               <h2 className="text-xl font-semibold text-white mb-4">Select Scan Type</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -261,59 +299,10 @@ const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>): void => {
 
           {/* Results Panel */}
           <div className="lg:col-span-1">
-            <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20 sticky top-8">
-              <h2 className="text-xl font-semibold text-white mb-4">Scan Results</h2>
-              
-              {!scanResult ? (
-                <div className="text-center py-8">
-                  <Brain className="w-16 h-16 text-gray-500 mx-auto mb-4" />
-                  <p className="text-gray-400">Upload a file and start scanning to see results</p>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  <div className="bg-white/5 rounded-lg p-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="font-semibold text-white">Analysis Complete</h3>
-                      <span className="text-green-400 text-sm">✓ {scanResult.confidence}% confidence</span>
-                    </div>
-                    <p className="text-sm text-gray-400">Scan Type: {scanResult.scanType.toUpperCase()}</p>
-                    <p className="text-sm text-gray-400">Date: {scanResult.timestamp}</p>
-                  </div>
-
-                  <div className="bg-white/5 rounded-lg p-4">
-                    <h4 className="font-medium text-white mb-2">Key Findings:</h4>
-                    <ul className="space-y-1">
-                      {scanResult.findings.map((finding, index) => (
-                        <li key={index} className="text-sm text-gray-300 flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
-                          {finding}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="bg-white/5 rounded-lg p-4">
-                    <h4 className="font-medium text-white mb-2">Recommendations:</h4>
-                    <ul className="space-y-1">
-                      {scanResult.recommendations.map((rec, index) => (
-                        <li key={index} className="text-sm text-blue-300 flex items-start gap-2">
-                          <AlertCircle className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
-                          {rec}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <button
-                    onClick={downloadReport}
-                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-3 px-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
-                  >
-                    <Download className="w-4 h-4" />
-                    Download PDF Report
-                  </button>
-                </div>
-              )}
-            </div>
+            <ResultPanel 
+              scanResult={scanResult} 
+              onDownloadReport={downloadReport}
+            />
           </div>
         </div>
       </div>

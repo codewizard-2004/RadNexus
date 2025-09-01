@@ -3,8 +3,18 @@ import React from 'react'
 import { FileText, CheckCircle} from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
+interface ScanHistoryItem {
+  id: number;
+  scanType: string;
+  fileName: string;
+  date: string;
+  status: string;
+  confidence: number;
+  color: string;
+}
+
 interface scanHistoryProps {
-    scanHistory: any
+    scanHistory: ScanHistoryItem[]
 }
 
 const ScanHistory = ({scanHistory}: scanHistoryProps) => {
@@ -20,7 +30,7 @@ const ScanHistory = ({scanHistory}: scanHistoryProps) => {
                 </button>
               </div>
               <div className="space-y-3">
-                {scanHistory.map((scan: any) => (
+                {scanHistory.map((scan: ScanHistoryItem) => (
                   <div key={scan.id} className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-colors">
                     <div className="flex items-center gap-3">
                       <div className={`w-10 h-10 rounded-lg bg-gradient-to-r ${scan.color} flex items-center justify-center`}>

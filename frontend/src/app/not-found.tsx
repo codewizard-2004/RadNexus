@@ -87,7 +87,7 @@ export default function Error404Page() {
             Looks like this page took a wrong turn in cyberspace
           </p>
           <p className="text-gray-400">
-            The page you're looking for might have been moved, deleted, or never existed.
+            The page you&apos;re looking for might have been moved, deleted, or never existed.
           </p>
         </div>
 
@@ -121,7 +121,7 @@ export default function Error404Page() {
         {/* Help text */}
         <div className="mt-12 text-center">
           <p className="text-gray-400 text-sm">
-            Still can't find what you're looking for?{' '}
+            Still can&apos;t find what you&apos;re looking for?{' '}
             <a href="/contact" className="text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text hover:from-blue-300 hover:to-purple-300 font-semibold transition-all duration-300">
               Contact our support team
             </a>

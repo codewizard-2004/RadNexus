@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Download, CheckCircle, AlertCircle, Brain, Camera } from 'lucide-react';
+import { Download, CheckCircle, AlertCircle, Brain } from 'lucide-react';
 
 interface ScanResult {
   scanType: string;

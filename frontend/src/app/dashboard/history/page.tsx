@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { ArrowLeft, FileText, CheckCircle, Clock, AlertCircle, Download, Brain, Activity, Zap, Heart, Calendar, User, Camera, ChevronRight, Search, Filter } from 'lucide-react';
+import { ArrowLeft, FileText, CheckCircle, Clock, AlertCircle, Download, Brain, Activity, Zap, Heart, Calendar, Camera, ChevronRight, Search } from 'lucide-react';
 
 interface ScanHistoryItem {
   id: number;

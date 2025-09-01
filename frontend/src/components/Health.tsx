@@ -19,7 +19,7 @@ const Health = () => {
             </div>
             <div className="bg-white/5 rounded-lg p-4">
               <p className="text-gray-400 text-sm">Height</p>
-              <p className="text-white font-semibold">5'10" (178 cm)</p>
+              <p className="text-white font-semibold">5&apos;10&quot; (178 cm)</p>
             </div>
             <div className="bg-white/5 rounded-lg p-4">
               <p className="text-gray-400 text-sm">Weight</p>

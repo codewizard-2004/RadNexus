@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { User, Upload, Download, Activity, Heart, Brain, Zap, Crown, FileText, CheckCircle, Clock, AlertCircle } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { Upload, Activity, Heart, Brain, Zap, Crown, FileText, CheckCircle, Clock, AlertCircle } from 'lucide-react';
 
 import Navbar from '@/components/Navbar';
 import ResultPanel from '@/components/ResultPanel';
@@ -14,7 +13,6 @@ export default function HealthDashboard() {
   const [isScanning, setIsScanning] = useState(false);
   const [scanResult, setScanResult] = useState<ScanResult | null>(null);
   const [userPlan, setUserPlan] = useState('free'); // 'free' or 'pro'
-  const router = useRouter();
 
   const scanTypes = [
     { 
@@ -88,21 +86,7 @@ export default function HealthDashboard() {
     }
   ];
 
-interface ScanType {
-    id: string;
-    name: string;
-    description: string;
-    icon: React.ComponentType<{ className?: string }>;
-    free: boolean;
-    color: string;
-}
 
-interface Stat {
-    label: string;
-    value: string;
-    icon: React.ComponentType<{ className?: string }>;
-    color: string;
-}
 
 interface ScanResult {
     scanType: string;

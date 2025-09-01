@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react'
 import { User, Brain, Crown } from 'lucide-react';
 import { useRouter } from 'next/navigation';

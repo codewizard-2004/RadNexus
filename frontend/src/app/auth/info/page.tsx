@@ -82,7 +82,7 @@ export default function HealthQuestionnaire() {
   const handleSubmit = () => {
     console.log('Health data submitted:', formData);
     // Handle form submission here
-    router.push('/pricing');
+    router.push('/auth/pricing');
   };
 
   const renderStep = () => {

@@ -40,7 +40,7 @@ export default function SignupPage() {
               />
             </div>
             
-            <button onClick={() => router.push('/info')}
+            <button onClick={() => router.push('/auth/info')}
               className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-6 py-4 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-purple-500/25"
             >
               Create Account

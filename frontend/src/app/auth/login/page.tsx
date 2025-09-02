@@ -51,7 +51,7 @@ export default function LoginPage() {
             </div>
             
             <button 
-              onClick={()=>router.push("/info")}
+              onClick={()=>router.push("/dashboard")}
               className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 px-6 py-4 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-blue-500/25"
             >
               Log In

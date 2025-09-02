@@ -128,7 +128,7 @@ export default function App() {
 
   const handleUpgradePlan = () => {
     console.log('Upgrading to Pro plan');
-    router.push('/pricing');
+    router.push('/auth/pricing');
     setUserPlan('pro');
   };
 

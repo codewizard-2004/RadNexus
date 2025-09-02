@@ -1,26 +1,26 @@
 "use client";
 import { useRouter } from "next/navigation";
 
-export default function LoginPage() {
+export default function SignupPage() {
   const router = useRouter();
   return (
     <main className="min-h-screen relative overflow-hidden flex flex-col items-center justify-center text-white font-sans">
       {/* Animated background gradients */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 pointer-events-none"></div>
-      <div className="absolute inset-0 bg-gradient-to-tl from-cyan-900/30 via-transparent to-pink-900/30 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900"></div>
+      <div className="absolute inset-0 bg-gradient-to-tl from-pink-900/30 via-transparent to-cyan-900/30"></div>
       
       {/* Floating orbs */}
-      <div className="absolute top-1/3 right-1/4 w-56 h-56 bg-blue-500/20 rounded-full blur-xl animate-pulse pointer-events-none"></div>
-      <div className="absolute bottom-1/3 left-1/4 w-40 h-40 bg-purple-500/20 rounded-full blur-xl animate-pulse delay-700 pointer-events-none"></div>
-      <div className="absolute top-2/3 right-1/3 w-28 h-28 bg-cyan-500/20 rounded-full blur-xl animate-pulse delay-300 pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/20 rounded-full blur-xl animate-pulse pointer-events-none"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-blue-500/20 rounded-full blur-xl animate-pulse delay-1000 pointer-events-none"></div>
+      <div className="absolute top-3/4 left-1/3 w-32 h-32 bg-pink-500/20 rounded-full blur-xl animate-pulse delay-500 pointer-events-none"></div>
       
       {/* Glassmorphism card */}
       <div className="relative z-50 bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 p-10 w-full max-w-md flex flex-col items-center">
         <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-2xl pointer-events-none"></div>
         
         <div className="relative z-10 w-full flex flex-col items-center">
-          <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-300 via-cyan-300 to-purple-300 text-transparent bg-clip-text animate-pulse">
-            Welcome Back
+          <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-purple-300 via-pink-300 to-blue-300 text-transparent bg-clip-text animate-pulse">
+            Sign Up
           </h1>
           
           <div className="w-full flex flex-col gap-5">
@@ -28,7 +28,7 @@ export default function LoginPage() {
               <input 
                 type="email" 
                 placeholder="Email" 
-                className="w-full px-4 py-4 rounded-xl bg-white/5 backdrop-blur-sm text-white placeholder-gray-300 border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 hover:bg-white/10" 
+                className="w-full px-4 py-4 rounded-xl bg-white/5 backdrop-blur-sm text-white placeholder-gray-300 border border-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all duration-300 hover:bg-white/10" 
               />
             </div>
             
@@ -36,25 +36,14 @@ export default function LoginPage() {
               <input 
                 type="password" 
                 placeholder="Password" 
-                className="w-full px-4 py-4 rounded-xl bg-white/5 backdrop-blur-sm text-white placeholder-gray-300 border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 hover:bg-white/10" 
+                className="w-full px-4 py-4 rounded-xl bg-white/5 backdrop-blur-sm text-white placeholder-gray-300 border border-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all duration-300 hover:bg-white/10" 
               />
             </div>
             
-            <div className="flex items-center justify-between text-sm">
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" className="w-4 h-4 rounded border border-white/20 bg-white/5 text-blue-400 focus:ring-2 focus:ring-blue-400" />
-                <span className="text-gray-300">Remember me</span>
-              </label>
-              <a href="/forgot-password" className="text-transparent bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text hover:from-blue-200 hover:to-cyan-200 font-medium transition-all duration-300">
-                Forgot password?
-              </a>
-            </div>
-            
-            <button 
-              onClick={()=>router.push("/info")}
-              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 px-6 py-4 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-blue-500/25"
+            <button onClick={() => router.push('/info')}
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-6 py-4 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-purple-500/25"
             >
-              Log In
+              Create Account
             </button>
           </div>
           
@@ -75,9 +64,9 @@ export default function LoginPage() {
           </button>
           
           <p className="text-gray-300 mt-8 text-center">
-            Don&apos;t have an account?{' '}
-            <a href="/signup" className="text-transparent bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text hover:from-blue-200 hover:to-purple-200 font-semibold transition-all duration-300">
-              Sign up
+            Already have an account?{' '}
+            <a href="/auth/login" className="text-transparent bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text hover:from-purple-200 hover:to-pink-200 font-semibold transition-all duration-300">
+              Log in
             </a>
           </p>
         </div>

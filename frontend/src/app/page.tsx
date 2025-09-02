@@ -16,7 +16,7 @@ export default function Home() {
           <a href="#pricing" className="hover:text-purple-400 transition">Pricing</a>
           <a href="#signup" className="hover:text-purple-400 transition">Sign Up</a>
         </nav>
-        <Link href="/login" className="bg-purple-600 hover:bg-purple-700 px-5 py-2 rounded text-white font-semibold transition">
+        <Link href="/auth/login" className="bg-purple-600 hover:bg-purple-700 px-5 py-2 rounded text-white font-semibold transition">
           Get Started
         </Link>
       </header>
@@ -27,7 +27,7 @@ export default function Home() {
         <p className="text-lg md:text-2xl max-w-2xl mb-8 text-gray-300">
           Since you have an MRI scanner, you can upload your images and receive instant, AI-generated test reports. Download your results as PDFs. Fast, secure, and easy to use.
         </p>
-        <Link href="/signup" className="mt-4 bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded text-lg font-semibold transition">
+        <Link href="/auth/signup" className="mt-4 bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded text-lg font-semibold transition">
           Sign Up Free
         </Link>
       </section>

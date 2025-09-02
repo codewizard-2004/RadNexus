@@ -1,10 +1,9 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { Home, ArrowLeft, Search, Brain, Zap, Heart, Activity, RefreshCw } from 'lucide-react';
+import { Home, ArrowLeft, Brain, Zap, Heart, Activity, RefreshCw } from 'lucide-react';
 
 export default function Error404Page() {
   const [glitchText, setGlitchText] = useState('404');
-  const [searchQuery, setSearchQuery] = useState('');
 
   const glitchVariations = ['404', '4O4', '40₄', '₄04', '4０4', '４04'];
 
@@ -20,13 +19,6 @@ export default function Error404Page() {
 
     return () => clearInterval(interval);
   }, []);
-
-  const quickLinks = [
-    { label: 'Dashboard', href: '/dashboard', icon: Home },
-    { label: 'Health Profile', href: '/health', icon: Heart },
-    { label: 'Scan History', href: '/scans', icon: Activity },
-    { label: 'Settings', href: '/settings', icon: Brain }
-  ];
 
   return (
     <div className="min-h-screen relative overflow-hidden flex flex-col items-center justify-center text-white font-sans">

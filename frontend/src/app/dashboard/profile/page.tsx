@@ -5,14 +5,11 @@ import {
   User, 
   Lock, 
   Crown, 
-  Heart, 
-  Trash2, 
+  Heart,  
   Bell, 
   Shield, 
-  AlertTriangle,
   Settings,
   LogOut,
-  Download,
   LucideIcon,
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
@@ -21,7 +18,7 @@ import Security from '@/components/Security';
 import Subscription from '@/components/Subscription';
 import Health from '@/components/Health';
 import Modal from '@/components/Modal';
-import { useToast, useToastActions } from '@/components/Toast';
+import { useToastActions } from '@/components/Toast';
 import { useRouter } from 'next/navigation';
 
 // Define types for state objects
@@ -82,7 +79,7 @@ export default function App() {
   const [userPlan, setUserPlan] = useState<'free' | 'pro'>('free');
   const [isGoogleLinked, setIsGoogleLinked] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const { success, error } = useToastActions();
+  const { success } = useToastActions();
   const router = useRouter();
 
   const tabs: Tab[] = [

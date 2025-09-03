@@ -4,7 +4,7 @@ import { Brain, Activity, Zap, Heart, FileText, Download, Calendar, Camera, Chec
 import { useParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 
-const page = () => {
+const Page = () => {
     interface ScanHistoryItem {
         id: number;
         scanType: 'MRI Scan' | 'CT Scan' | 'X-Ray' | 'Ultrasound';
@@ -433,4 +433,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

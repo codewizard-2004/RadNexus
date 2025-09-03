@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import { Home, ArrowLeft, Brain, Zap, Heart, Activity, RefreshCw } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Error404Page() {
   const [glitchText, setGlitchText] = useState('404');
@@ -93,13 +94,13 @@ export default function Error404Page() {
             Go Back
           </button>
           
-          <a
+          <Link
             href="/dashboard"
             className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-3 rounded-xl text-white font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/25"
           >
             <Home className="w-4 h-4" />
             Go Home
-          </a>
+          </Link>
           
           <button
             onClick={() => window.location.reload()}
@@ -114,9 +115,9 @@ export default function Error404Page() {
         <div className="mt-12 text-center">
           <p className="text-gray-400 text-sm">
             Still can&apos;t find what you&apos;re looking for?{' '}
-            <a href="/contact" className="text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text hover:from-blue-300 hover:to-purple-300 font-semibold transition-all duration-300">
+            <Link href="/contact" className="text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text hover:from-blue-300 hover:to-purple-300 font-semibold transition-all duration-300">
               Contact our support team
-            </a>
+            </Link>
           </p>
         </div>
       </div>

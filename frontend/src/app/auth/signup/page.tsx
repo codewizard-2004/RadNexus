@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function SignupPage() {
@@ -65,9 +66,9 @@ export default function SignupPage() {
           
           <p className="text-gray-300 mt-8 text-center">
             Already have an account?{' '}
-            <a href="/auth/login" className="text-transparent bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text hover:from-purple-200 hover:to-pink-200 font-semibold transition-all duration-300">
+            <Link href="/auth/login" className="text-transparent bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text hover:from-purple-200 hover:to-pink-200 font-semibold transition-all duration-300">
               Log in
-            </a>
+            </Link>
           </p>
         </div>
       </div>

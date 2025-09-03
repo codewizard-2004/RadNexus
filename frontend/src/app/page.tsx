@@ -12,9 +12,9 @@ export default function Home() {
         </div>
         <nav className="flex gap-6">
           {/* Keep <a> for same-page scroll links */}
-          <a href="#features" className="hover:text-purple-400 transition">Features</a>
-          <a href="#pricing" className="hover:text-purple-400 transition">Pricing</a>
-          <a href="#signup" className="hover:text-purple-400 transition">Sign Up</a>
+          <Link href="#features" className="hover:text-purple-400 transition">Features</Link>
+          <Link href="#pricing" className="hover:text-purple-400 transition">Pricing</Link>
+          <Link href="#signup" className="hover:text-purple-400 transition">Sign Up</Link>
         </nav>
         <Link href="/auth/login" className="bg-purple-600 hover:bg-purple-700 px-5 py-2 rounded text-white font-semibold transition">
           Get Started

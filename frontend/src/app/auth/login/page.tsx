@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
@@ -45,9 +46,9 @@ export default function LoginPage() {
                 <input type="checkbox" className="w-4 h-4 rounded border border-white/20 bg-white/5 text-blue-400 focus:ring-2 focus:ring-blue-400" />
                 <span className="text-gray-300">Remember me</span>
               </label>
-              <a href="/forgot-password" className="text-transparent bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text hover:from-blue-200 hover:to-cyan-200 font-medium transition-all duration-300">
+              <Link href="/forgot-password" className="text-transparent bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text hover:from-blue-200 hover:to-cyan-200 font-medium transition-all duration-300">
                 Forgot password?
-              </a>
+              </Link>
             </div>
             
             <button 
@@ -76,9 +77,9 @@ export default function LoginPage() {
           
           <p className="text-gray-300 mt-8 text-center">
             Don&apos;t have an account?{' '}
-            <a href="/auth/signup" className="text-transparent bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text hover:from-blue-200 hover:to-purple-200 font-semibold transition-all duration-300">
+            <Link href="/auth/signup" className="text-transparent bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text hover:from-blue-200 hover:to-purple-200 font-semibold transition-all duration-300">
               Sign up
-            </a>
+            </Link>
           </p>
         </div>
       </div>
